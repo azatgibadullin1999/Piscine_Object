@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 13:58:06 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 15:11:47 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:41:21 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 # define EX00_TOOLMANAGER_HPP
 
 # include <map>
+# include <memory>
 # include <utility>
 # include <sys/types.h>
-# include "toolproxy.hpp"
-# include "hammer.hpp"
-# include "shovel.hpp"
-# include "tool.hpp"
 # include "workermanager.hpp"
-# include "worker.hpp"
+# include "proxyclasses/toolproxy.hpp"
+# include "tools/hammer.hpp"
+# include "tools/shovel.hpp"
+# include "tools/tool.hpp"
 
 class ToolManagerSingleton {
 private:
 	typedef long				IdType;
-	typedef std::pair< Tool, Worker *>	ValueType;
+	typedef std::pair< Tool *, Worker *>	ValueType;
 	typedef std::map< IdType, ValueType >	Container;
 private:
 	ToolManagerSingleton() ;

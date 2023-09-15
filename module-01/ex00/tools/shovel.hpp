@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 00:05:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/02 19:51:25 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:12:04 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@
 struct Shovel : public Tool {
 public:
 	Shovel() { }
+	Shovel(const Shovel &other) : Tool(other) { }
 	~Shovel() { }
 
 	void	use() {
 		Tool::use();
 		std::cout << "shovel is used" << std::endl;
+	}
+
+	Tool	*clone() const {
+		return new Shovel(*this);
 	}
 } ;
 

@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:22:27 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 13:06:27 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:40:52 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 # define EX00_WORKERMANAGER_HPP
 
 # include <map>
-# include "workerproxy.hpp"
+# include "proxyclasses/workerproxy.hpp"
 # include "workshop.hpp"
 # include "worker.hpp"
-# include "toolmanager.hpp"
-# include "toolproxy.hpp"
-# include "tool.hpp"
+# include "tools/tool.hpp"
 
 class WorkerManagerSingleton {
 public:

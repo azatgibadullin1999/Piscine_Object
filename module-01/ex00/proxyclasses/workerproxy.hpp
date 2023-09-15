@@ -6,15 +6,15 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:32:53 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 12:08:01 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/14 17:51:21 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EX00_PROXYCLASSES_WORKERPROXY_HPP
 # define EX00_PROXYCLASSES_WORKERPROXY_HPP
 
-# include "worker.hpp"
-# include "toolmanager.hpp"
+# include "../worker.hpp"
+# include "../toolmanager.hpp"
 
 class WorkerProxy {
 	friend class ToolManagerSingleton;

@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 23:50:49 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 15:54:20 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 12:47:38 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <algorithm>
 # include "position.hpp"
 # include "statistic.hpp"
-# include "shovel.hpp"
-# include "hammer.hpp"
+# include "tools/tool.hpp"
+# include "tools/shovel.hpp"
+# include "tools/hammer.hpp"
 
 class Worker {
 private:
 	typedef std::vector<Tool *>	Container;
+private:
 	Position	_coordonnee;
 	Statistic	_stat;
 	Container	_tools;

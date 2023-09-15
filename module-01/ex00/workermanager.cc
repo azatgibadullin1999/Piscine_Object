@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   workermanager.cpp                                  :+:      :+:    :+:   */
+/*   workermanager.cc                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:05:19 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 10:19:18 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:16:30 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ WorkerManagerSingleton	&WorkerManagerSingleton::getInstance(void) {
 	return workerManager;
 }
 
-WorkerProxy	WorkerManagerSingleton::getProxy(const WorkerManagerSingleton::IdType &workerId) {
+WorkerProxy	WorkerManagerSingleton::getProxy(const IdType &workerId) {
 	Container::iterator	it = _workers.find(workerId);
 
 	if (it == _workers.end()) {
@@ -34,7 +34,7 @@ WorkerProxy	WorkerManagerSingleton::getProxy(const WorkerManagerSingleton::IdTyp
 	return WorkerProxy(&it->second);
 }
 
-Worker	*WorkerManagerSingleton::getWorker(const WorkerManagerSingleton::IdType &workerId) {
+Worker	*WorkerManagerSingleton::getWorker(const IdType &workerId) {
 	Container::iterator	it = _workers.find(workerId);
 
 	if (it == _workers.end()) {
@@ -51,11 +51,11 @@ WorkerManagerSingleton::IdType	WorkerManagerSingleton::addWorker(const Worker &w
 	}
 }
 
-int	WorkerManagerSingleton::deleteWorker(const WorkerManagerSingleton::IdType &workerId) {
+int	WorkerManagerSingleton::deleteWorker(const IdType &workerId) {
 	_workers.erase(workerId);
 }
 
-int	WorkerManagerSingleton::giveWorkerToWorkshop(Workshop &workshop, const WorkerManagerSingleton::IdType &workerId) {
+int	WorkerManagerSingleton::giveWorkerToWorkshop(Workshop &workshop, const IdType &workerId) {
 	try {
 		Worker	*worker = getWorker(workerId);
 
@@ -69,7 +69,7 @@ int	WorkerManagerSingleton::giveWorkerToWorkshop(Workshop &workshop, const Worke
 	return 0;
 }
 
-int	WorkerManagerSingleton::removeWorkerFromWorkshop(Workshop &workshop, const WorkerManagerSingleton::IdType &workerId) {
+int	WorkerManagerSingleton::removeWorkerFromWorkshop(Workshop &workshop, const IdType &workerId) {
 	Worker	*worker = getWorker(workerId);
 
 	if (worker == NULL) {

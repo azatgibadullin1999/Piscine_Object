@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:54:05 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 15:54:28 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 12:50:30 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 class Workshop {
 private:
 	typedef std::vector<Worker *>	Container;
+private:
 	Container	_workers;
 public:
 	Workshop() { }

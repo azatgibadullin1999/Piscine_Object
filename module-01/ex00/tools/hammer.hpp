@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 14:27:17 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/02 20:15:18 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:12:15 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,16 @@
 struct Hammer : public Tool {
 public:
 	Hammer() { }
+	Hammer(const Hammer &other) : Tool(other) { }
 	~Hammer() { }
 
 	void	use() {
 		Tool::use();
 		std::cout << "Hammer is used" << std::endl;
+	}
+
+	Tool	*clone() const {
+		return new Hammer(*this);
 	}
 } ;
 
