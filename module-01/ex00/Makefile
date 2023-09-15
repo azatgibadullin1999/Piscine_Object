@@ -9,7 +9,8 @@ INCLUDE_EXT =	.hpp
 
 SOURCE_NAME =	workermanager$(SOURCE_EXT) \
 		toolmanager$(SOURCE_EXT) \
-		main$(SOURCE_EXT)
+		main$(SOURCE_EXT) \
+		tool$(SOURCE_EXT)
 
 INCLUDE_NAME =	workshop$(INCLUDE_EXT) \
 		workermanager$(INCLUDE_EXT) \

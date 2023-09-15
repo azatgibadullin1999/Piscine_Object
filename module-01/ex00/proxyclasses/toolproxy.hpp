@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:32:19 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/14 17:51:07 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 15:19:17 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 # define EX00_PROXYCLASSES_TOOLPROXY_HPP
 
 # include "../tools/tool.hpp"
-# include "../workermanager.hpp"
+
+class ToolManagerSingleton;
 
 class ToolProxy {
 	friend class ToolManagerSingleton;

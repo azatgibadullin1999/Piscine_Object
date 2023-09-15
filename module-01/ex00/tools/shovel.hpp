@@ -6,15 +6,15 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 00:05:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/09/15 13:12:04 by larlena          ###   ########.fr       */
+/*   Updated: 2023/09/15 15:55:55 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EX00_TOOLS_SHOVEL_HPP
 # define EX00_TOOLS_SHOVEL_HPP
 
-# include "tool.hpp"
 # include <iostream>
+# include "tool.hpp"
 
 struct Shovel : public Tool {
 public:
