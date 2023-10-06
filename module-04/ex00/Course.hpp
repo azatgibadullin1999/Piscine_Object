@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:00:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/04 15:44:06 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:43:22 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,33 @@
 
 # include <string>
 # include <vector>
+# include <memory>
 
 class Student;
 class Professor;
 
 class Course {
+public:
+	typedef std::string	NameStoringType;
+	typedef std::shared_ptr<Student>	StudentStoringType; 
+	typedef std::shared_ptr<Professor>	ProfessorStoringType;
 private:
-	std::vector<Student *>	_students;
-	std::string	_name;
-	Professor	*_responsable;
+	std::vector< StudentStoringType >	_students;
+	ProfessorStoringType	_responsable;
+	NameStoringType		_name;
 	int 	_numberOfClassToGraduate;
 	int	_maximumNumberOfStudent;
 public:
-	Course(std::string p_name);
-	void	assign(Professor *p_professor);
-	void	subscribe(Student *p_student);
+	Course(const NameStoringType &name) :
+	_name(name) { }
+
+	Course(NameStoringType &&name) :
+	_name(std::move(name)) { }
+
+	void	assign(const ProfessorStoringType &professor) { }
+
+	void	subscribe(const StudentStoringType &student) { }
+
 };
 
 #endif // EX00_COURSE_HPP

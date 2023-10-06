@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/03 17:21:30 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/06 12:23:01 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 
 class SubscriptionToCourseForm : public Form {
 public:
-	void	execute();
+	SubscriptionToCourseForm() :
+	Form(FormType::SubscriptionToCourse) { }
+
+	~SubscriptionToCourseForm() { }
+
+	void	execute() override { }
 };
 
 #endif // EX00_FORM_SUBSCRIPTIONTOCOURSEFORM_HPP

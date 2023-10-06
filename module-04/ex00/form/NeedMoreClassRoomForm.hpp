@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:31 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/03 17:21:32 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/06 12:23:08 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@
 
 class NeedMoreClassRoomForm : public Form {
 public:
-	void	execute();
+	NeedMoreClassRoomForm() :
+	Form(FormType::NeedMoreClassRoom) { }
+
+	~NeedMoreClassRoomForm() { }
+
+	void	execute() override { }
 };
 
 #endif // EX00_FORM_NEEDMORECLASSROOMFORM_HPP

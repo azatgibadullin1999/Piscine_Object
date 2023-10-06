@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:01 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/03 17:21:23 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:25:45 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,27 @@
 # define EX00_PERSON_PERSON_HPP
 
 # include <string>
+# include <memory>
 
 class Room;
 
 class Person {
-private:
-	std::string _name;
-	Room *_currentRoom;
 public:
-	Person(std::string p_name);
-	Room *room() {
+	typedef std::string		NameStoringType;
+	typedef std::shared_ptr<Room>	RoomStoringType;
+private:
+	NameStoringType	_name;
+	RoomStoringType	_currentRoom;
+public:
+	Person(const NameStoringType &name) :
+	_name(name),
+	_currentRoom(nullptr) { }
+
+	Person(NameStoringType &&name) :
+	_name(std::move(name)),
+	_currentRoom(nullptr) { }
+
+	RoomStoringType	&room() {
 		return _currentRoom;
 	}
 };

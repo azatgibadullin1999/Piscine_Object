@@ -6,12 +6,14 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:48:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/03 15:31:48 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:44:24 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EX00_FORM_FORM_HPP
 # define EX00_FORM_FORM_HPP
+
+# include <utility>
 
 enum class FormType {
 	CourseFinished,
@@ -24,7 +26,11 @@ class Form {
 private:
 	FormType	_formType;
 public:
-	Form(FormType p_formType) { }
+	Form(const FormType &formType) :
+	_formType(formType) { }
+
+	Form(FormType &&formType) :
+	_formType(std::move(formType)) { }
 
 	virtual void	execute() = 0;
 };
