@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:10:04 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 17:29:14 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/31 19:05:43 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@
 # include "../Course.hpp"
 
 class Staff;
-
-class ProfessorBase;
-using Professor = ft::pattern::factory::FactoryWrapper<ProfessorBase>;
 
 class ProfessorBase : public Staff {
 public:
@@ -44,5 +41,7 @@ public:
 
 	void	closeCourse() { }
 };
+
+using Professor = ft::pattern::factory::FactoryWrapper<ProfessorBase>;
 
 #endif // __EX03_PERSON_PROFESSOR_HPP__

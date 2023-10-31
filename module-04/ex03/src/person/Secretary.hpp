@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:10:27 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 17:29:03 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/31 19:05:51 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,6 @@
 enum class FormType;
 class Staff;
 
-class SecretaryBase;
-using Secretary = ft::pattern::factory::FactoryWrapper<SecretaryBase>;
-
 class SecretaryBase : public Staff {
 public:
 	using Staff::Staff;
@@ -35,5 +32,7 @@ public:
 
 	void archiveForm() { }
 };
+
+using Secretary = ft::pattern::factory::FactoryWrapper<SecretaryBase>;
 
 #endif // __EX03_PERSON_SECRETARY_HPP__

@@ -1,4 +1,4 @@
-CC = g++
+CC = clang++
 CFLAGS = # -Wall -Wextra -Werror
 
 EXECUTABLE_FILE = ex03

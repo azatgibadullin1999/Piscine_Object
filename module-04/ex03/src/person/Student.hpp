@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:06:22 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 17:28:56 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/31 19:08:44 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 # define __EX03_PERSON_STUDENT_HPP__
 
 # include <vector>
+# include "Person.hpp"
 
 class Course;
 class Classroom;
 class Person;
-
-class StudentBase;
-using Student = ft::pattern::factory::FactoryWrapper<StudentBase>;
 
 class StudentBase : public Person {
 private:
@@ -42,5 +40,7 @@ public:
 
 	void	graduate(std::shared_ptr<Course> course) { }
 };
+
+using Student = ft::pattern::factory::FactoryWrapper<StudentBase>;
 
 #endif // __EX03_PERSON_STUDENT_HPP__
