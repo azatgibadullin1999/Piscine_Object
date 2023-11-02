@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:31 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:16:43 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:09:40 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include "Form.hpp"
-# include "../room/Classroom.hpp"
+# include "../person/PersonAliases.hpp"
 
-class NeedMoreClassRoomForm : public IForm {
+class NeedMoreClassRoomForm final : public IForm {
 private:
 	std::weak_ptr<Professor>	_requestor;
 public:
@@ -32,15 +32,7 @@ public:
 
 	~NeedMoreClassRoomForm() { }
 
-	void	execute() override {
-		auto&&	school = SchoolSingleton::getInstance();
-		auto&&	requestor = _requestor.lock();
-
-		if (requestor == nullptr) {
-			return ;
-		}
-		school.getRooms().add(std::make_shared<Classroom>());
-	}
+	void	execute() override;
 };
 
 #endif // __EX03_FORM_NEEDMORECLASSROOMFORM_HPP__

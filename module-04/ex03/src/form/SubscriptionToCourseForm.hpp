@@ -6,15 +6,16 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:17:13 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 00:55:33 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef __EX03_FORM_SUBSCRIPTIONTOCOURSEFORM_HPP__
 # define __EX03_FORM_SUBSCRIPTIONTOCOURSEFORM_HPP__
 
-# include "Form.hpp"
 # include <iostream>
+# include "Form.hpp"
+# include "../person/PersonAliases.hpp"
 
 class SubscriptionToCourseForm : public IForm {
 private:
@@ -32,14 +33,7 @@ public:
 		_requestor = requestor;
 	}
 
-	void	execute() override {
-		auto&&	school = SchoolSingleton::getInstance();
-		auto&&	requestor = _requestor.lock();
-
-		if (requestor == nullptr) {
-			return ;
-		}
-	}
+	void	execute() override;
 };
 
 #endif // __EX03_FORM_SUBSCRIPTIONTOCOURSEFORM_HPP__

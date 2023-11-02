@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:07:17 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 18:57:35 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 21:46:23 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,43 +33,40 @@ class StandardFactory : public IFactory<BaseClass> {
 public:
 	StandardFactory() noexcept { }
 	virtual ~StandardFactory() { }
-	typename IFactory<BaseClass>::pointer create() const override {
-		return std::make_shared(DerivedClass());
+	typename std::shared_ptr<BaseClass> create() const override {
+		return std::static_pointer_cast<BaseClass>(std::make_shared<DerivedClass>(DerivedClass()));
 	}
 };
 
 template <typename WrappedClass>
-class FactoryWrapper : public WrappedClass {
-protected:
-	// FactoryWrapper() = delete;
-	// FactoryWrapper(const FactoryWrapper &other) = delete;
-	// FactoryWrapper(FactoryWrapper &&other) = delete;
-	// FactoryWrapper	&operator = (const FactoryWrapper &other) = delete;
-	// FactoryWrapper	&operator = (FactoryWrapper &&other) = delete;
+class FactoryWrapper final : public WrappedClass {
+private:
+	FactoryWrapper() { }
 
-public:
 	template <typename ... Args>
 	FactoryWrapper(Args&& ... args) :
 	WrappedClass(std::forward<Args>(args) ...) { }
-	virtual ~FactoryWrapper() { }
+public:
+	~FactoryWrapper() { }
 
 	template <typename ... Args>
 	static std::shared_ptr<FactoryWrapper> create(Args&& ... args) {
-		return std::make_shared<FactoryWrapper>(std::forward<Args>(args) ...);
+		return std::shared_ptr<FactoryWrapper>(new FactoryWrapper(std::forward<Args>(args) ...));
 	}
 };
 
-// template <typename InheritedClass>
-// class EnableSharedFactory : std::enable_shared_from_this<InheritedClass> {
-// protected:
-// 	EnableSharedFactory() { }
-// public:
-// 	virtual ~EnableSharedFactory() { }
-// 	template <typename ... Args>
-// 	static std::shared_ptr<InheritedClass> create(Args&& ... args) {
-// 		return make_shared(InheritedClass(std::forward<Args>(args) ...));
-// 	}
-// };
+template <typename InheritedClass>
+class SharedFromThisFactory : public std::enable_shared_from_this<InheritedClass> {
+protected:
+	SharedFromThisFactory() { }
+public:
+	virtual ~SharedFromThisFactory() { }
+
+	template <typename ... Args>
+	static std::shared_ptr<InheritedClass> create(Args&& ... args) {
+		return std::shared_ptr<InheritedClass>(new InheritedClass(std::forward<Args>(args) ...));
+	}
+};
 
 } } } // namespace ft::pattern::factory
 

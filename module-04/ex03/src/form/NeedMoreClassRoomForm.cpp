@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Staff.hpp                                          :+:      :+:    :+:   */
+/*   NeedMoreClassRoomForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 15:04:48 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 01:15:00 by larlena          ###   ########.fr       */
+/*   Created: 2023/10/31 19:43:42 by larlena           #+#    #+#             */
+/*   Updated: 2023/11/01 01:09:44 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EX03_PERSON_STAFF_HPP__
-# define __EX03_PERSON_STAFF_HPP__
+#include "NeedMoreClassRoomForm.hpp"
+#include "../singletons.hpp"
+#include "../room/Classroom.hpp"
+#include "../person/Professor.hpp"
 
-# include "Person.hpp"
-
-class IForm;
-
-class Staff : public Person {
-public:
-	using Person::Person;
-	virtual ~Staff() { }
-
-	void	sign(const std::shared_ptr<IForm> &form) {
+void	NeedMoreClassRoomForm::execute() {
+	auto&&	school = SchoolSingleton::getInstance();
+	auto&&	requestor = _requestor.lock();
+	
+	if (requestor == nullptr) {
+		return ;
 	}
-};
-
-#endif // __EX03_PERSON_STAFF_HPP__
+	school.getRooms().add(std::make_shared<Classroom>());
+}

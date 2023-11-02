@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:32:02 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 17:03:57 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/02 16:15:58 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,19 @@
 
 # include <vector>
 # include "pattern_base_classes/Singleton.hpp"
+# include "containerAdapter.hpp"
 # include "person/Student.hpp"
 # include "person/Staff.hpp"
-# include "Course.hpp"
 # include "room/Room.hpp"
-# include "containerAdapter.hpp"
+# include "Course.hpp"
 
-class School;	
+class School;
 
 typedef ft::pattern::singleton::SingletonWrapper<School>	SchoolSingleton;
 
 class School {
 protected:
 public:
-	// typedef Student	Student;
-	// typedef Course	Course;
-	// typedef Staff	Staff;
-	// typedef Room	Room;
 	typedef ContainerAdapter< std::shared_ptr<Student> >	StudentsContainers;
 	typedef ContainerAdapter< std::shared_ptr<Course> >	CoursesContainers;
 	typedef ContainerAdapter< std::shared_ptr<Staff> >	StaffsContainers;

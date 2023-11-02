@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:50:19 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:55:04 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 22:06:22 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,14 @@
 namespace ft { namespace pattern { namespace mediator {
 
 template <typename BaseClass>
-class IMediator : public std::enable_shared_from_this<IMediator> {
+class IMediator : public std::enable_shared_from_this<IMediator<BaseClass>> {
 protected:
-	IMediator() noexcept { }
+	IMediator() { }
+
+	template <typename ... Args>
+	void	setMediators(Args&& ... args) {
+		(args->setMediator(this->shared_from_this()), ...);
+	}
 public:
 	virtual ~IMediator() { }
 	virtual void	notify(std::shared_ptr<BaseClass> component, const std::string &event) = 0;

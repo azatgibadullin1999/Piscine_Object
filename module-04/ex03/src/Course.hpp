@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:00:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:19:52 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:04:10 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,31 +16,28 @@
 # include <string>
 # include <vector>
 # include <memory>
-
-class Student;
-class Professor;
+# include "person/Professor.hpp"
+# include "person/Student.hpp"
 
 class Course {
-public:
-	typedef std::shared_ptr<Professor>	ProfessorStoringType;
-	typedef std::shared_ptr<Student>	StudentStoringType; 
-	typedef std::string			NameStoringType;
 private:
-	std::vector< StudentStoringType >	_students;
-	ProfessorStoringType	_responsable;
-	NameStoringType		_name;
-	int 	_numberOfClassToGraduate;
-	int	_maximumNumberOfStudent;
+	std::vector< std::shared_ptr<Student> >	_students;
+	std::shared_ptr<Professor>		_responsable;
+	std::string				_name;
+	int 					_numberOfClassToGraduate;
+	int					_maximumNumberOfStudent;
 public:
-	Course(const NameStoringType &name) :
+	Course(const std::string &name) :
 	_name(name) { }
 
-	Course(NameStoringType &&name) :
+	Course(std::string &&name) :
 	_name(std::move(name)) { }
 
-	void	assign(const ProfessorStoringType &professor) { }
+	~Course() { }
 
-	void	subscribe(const StudentStoringType &student) { }
+	void	assign(const std::shared_ptr<Professor> &professor) { }
+
+	void	subscribe(const std::shared_ptr<Student> &student) { }
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:06:22 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 19:08:44 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:15:18 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,20 @@
 
 # include <vector>
 # include "Person.hpp"
+# include "../pattern_base_classes/Factory.hpp"
 
 class Course;
 class Classroom;
 class Person;
+
+namespace ft { namespace details {
 
 class StudentBase : public Person {
 private:
 	std::vector< std::shared_ptr<Course> >	_subscribedCourses;
 public:
 	using Person::Person;
+	virtual ~StudentBase() { }
 
 	void	setCourse(std::shared_ptr<Course> course) {
 		_subscribedCourses.push_back(course);
@@ -41,6 +45,8 @@ public:
 	void	graduate(std::shared_ptr<Course> course) { }
 };
 
-using Student = ft::pattern::factory::FactoryWrapper<StudentBase>;
+} } // namespace ft::details
+
+using Student = ft::pattern::factory::FactoryWrapper<ft::details::StudentBase>;
 
 #endif // __EX03_PERSON_STUDENT_HPP__

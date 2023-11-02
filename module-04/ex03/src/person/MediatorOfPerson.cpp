@@ -6,11 +6,12 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:13:52 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:33:26 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 14:14:35 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MediatorOfPerson.hpp"
+#include "../form/Form.hpp"
 
 namespace ft { namespace details {
 
@@ -19,7 +20,7 @@ void	MediatorOfPersonBase::notifyFromHeadmaster(const std::string &event) { }
 void	MediatorOfPersonBase::notifyFromSecretary(const std::string &event) { }
 
 void	MediatorOfPersonBase::notifyFromProfessor(const std::string &event) {
-	IForm::pointer	form;
+	std::shared_ptr<IForm>	form;
 
 	if (event == "have no courses") {
 		form = _secretary->createForm(FormType::NeedCourseCreation);

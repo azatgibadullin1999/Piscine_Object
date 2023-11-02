@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:17:09 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:16:29 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:09:16 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include <iostream>
 # include "Form.hpp"
-# include "../singletons.hpp"
+# include "../person/PersonAliases.hpp"
 
-class NeedCourseCreationForm : public IForm {
+class NeedCourseCreationForm final : public IForm {
 private:
 	std::weak_ptr<Professor>	_requestor;
 	std::string			_nameOfCourse;
@@ -29,25 +29,15 @@ public:
 
 	~NeedCourseCreationForm() { }
 
-	void	setRequestor(const std::shared_ptr<Professor> requestor) {
+	void	setRequestor(const std::shared_ptr<Professor> &requestor) {
 		_requestor = requestor;
 	}
 
-	void	setNameOfCourse(const std::string nameOfCourse) {
+	void	setNameOfCourse(const std::string &nameOfCourse) {
 		_nameOfCourse = nameOfCourse;
 	}
 
-	void	execute() override {
-		auto&&	school = SchoolSingleton::getInstance();
-		auto&&	course = std::make_shared<Course>(_nameOfCourse);
-		auto&&	requestor = _requestor.lock();
-
-		if (requestor == nullptr) {
-			return ;
-		}
-		school.getCourses().add(course);
-		requestor->assignCourse(course);
-	}
+	void	execute() override;
 };
 
 #endif // __EX03_FORM_NEEDCOURSECREATIONFORM_HPP__

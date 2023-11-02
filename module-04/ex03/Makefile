@@ -1,5 +1,5 @@
 CC = clang++
-CFLAGS = # -Wall -Wextra -Werror
+CFLAGS = -std=c++17 # -Wall -Wextra -Werror
 
 EXECUTABLE_FILE = ex03
 
@@ -9,6 +9,10 @@ INCLUDE_EXT =	.hpp
 
 SOURCE_NAME =	main$(SOURCE_EXT) \
 		Form$(SOURCE_EXT) \
+		CourseFinishedForm$(SOURCE_EXT) \
+		NeedCourseCreationForm$(SOURCE_EXT) \
+		NeedMoreClassRoomForm$(SOURCE_EXT) \
+		SubscriptionToCourseForm$(SOURCE_EXT) \
 		MediatorOfPerson$(SOURCE_EXT)
 
 INCLUDE_NAME_FORM =	Form$(INCLUDE_EXT) \
@@ -23,13 +27,14 @@ INCLUDE_NAME_PATTERN_BASE_CLASSES =	Command$(INCLUDE_EXT) \
 					Observer$(INCLUDE_EXT) \
 					Singleton$(INCLUDE_EXT)
 
-INCLUDE_NAME_PERSON =	Headmaster$(INCLUDE_EXT) \
+INCLUDE_NAME_PERSON =	Person$(INCLUDE_EXT) \
+			Staff$(INCLUDE_EXT) \
 			MediatorOfPerson$(INCLUDE_EXT) \
-			Person$(INCLUDE_EXT) \
+			Headmaster$(INCLUDE_EXT) \
 			Professor$(INCLUDE_EXT) \
 			Secretary$(INCLUDE_EXT) \
-			Staff$(INCLUDE_EXT) \
-			Student$(INCLUDE_EXT)
+			Student$(INCLUDE_EXT) \
+			PersonAliases$(INCLUDE_EXT)
 
 INCLUDE_NAME_ROOM =	Classroom$(INCLUDE_EXT) \
 			Courtyard$(INCLUDE_EXT) \

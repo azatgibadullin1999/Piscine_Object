@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:52:20 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:19:04 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:28:36 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class Classroom : public Room {
 private:
 	Course *_currentRoom;
 public:
-	Classroom();
+	Classroom() { }
+	~Classroom() { }
 	void	assignCourse(Course *p_course);
 };
 

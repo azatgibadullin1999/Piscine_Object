@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:01 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:18:30 by larlena          ###   ########.fr       */
+/*   Updated: 2023/10/31 21:11:46 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,24 @@
 
 # include <string>
 # include <memory>
-# include "MediatorOfPerson.hpp"
+# include "../pattern_base_classes/Mediator.hpp"
 
 class Room;
 
 class Person : public ft::pattern::mediator::BaseComponent<Person> {
-public:
-	typedef std::shared_ptr<Person>	pointer;
-	typedef std::string		NameStoringType;
-	typedef std::shared_ptr<Room>	RoomStoringType;
 private:
-	NameStoringType	_name;
-	RoomStoringType	_currentRoom;
+	std::string		_name;
+	std::shared_ptr<Room>	_currentRoom;
 public:
-	Person(const NameStoringType &name) :
+	Person(const std::string &name) :
 	_name(name),
 	_currentRoom(nullptr) { }
 
-	Person(NameStoringType &&name) :
+	Person(std::string &&name) :
 	_name(std::move(name)),
 	_currentRoom(nullptr) { }
+
+	virtual ~Person() { }
 
 	const std::string	&getName() const {
 		return _name;

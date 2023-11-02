@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:03:00 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:17:59 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 17:38:51 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,12 @@ public:
 	}
 
 	virtual void	notify() {
+		// std::for_each(_observers.begin(), _observers.end(), [&&smart_this = shared_from_this()](container_type::reference observer){observer->update(smart_this)});
 		for (auto&& it : _observers) {
 			it->update(shared_from_this());
 		}
 	}
 };
-
-// template <typename Container = std::vector<std::shared_ptr<IObserver>>>
-// using Subject = typename ft::pattern::factory::FactoryWrapper<detail::SubjectBase<Container>>;
 
 class IObserver {
 protected:

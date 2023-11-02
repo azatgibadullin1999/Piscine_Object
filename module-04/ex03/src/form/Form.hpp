@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:48:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:16:00 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/01 01:25:19 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 # define __EX03_FORM_FORM_HPP__
 
 # include <utility>
+# include <string>
 # include <memory>
 # include "../pattern_base_classes/Factory.hpp"
 # include "../pattern_base_classes/Command.hpp"
+
+class IForm;
+enum class FormType;
+std::shared_ptr<IForm>	createForm(FormType type);
 
 enum class FormType {
 	CourseFinished,
@@ -26,17 +31,9 @@ enum class FormType {
 	MAX,
 };
 
-std::array< std::string, static_cast<std::size_t>(FormType::MAX) >	FormTypeString {
-	"Course Finished",
-	"Need More Class Room",
-	"Need Course Creation",
-	"Subscription To Course"
-};
-
 class IForm : public ft::pattern::command::ICommand {
 public:
 	typedef ft::pattern::factory::IFactory<IForm>	IFactory;
-	typedef std::shared_ptr<IForm>	pointer;
 private:
 	FormType	_formType;
 	std::size_t	_id;
@@ -65,7 +62,5 @@ public:
 		return _formType;
 	}
 };
-
-typename IForm::pointer	createForm(FormType type);
 
 #endif // __EX03_FORM_FORM_HPP__
