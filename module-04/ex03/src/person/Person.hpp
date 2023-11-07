@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:01 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 21:11:46 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 09:47:14 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@
 
 class Room;
 
-class Person : public ft::pattern::mediator::BaseComponent<Person> {
+class Person :
+	public ft::pattern::mediator::BaseComponent<Person>,
+	public std::enable_shared_from_this<Person> {
 private:
 	std::string		_name;
 	std::shared_ptr<Room>	_currentRoom;
-public:
+protected:
 	Person(const std::string &name) :
 	_name(name),
 	_currentRoom(nullptr) { }
@@ -31,14 +33,14 @@ public:
 	Person(std::string &&name) :
 	_name(std::move(name)),
 	_currentRoom(nullptr) { }
-
+public:
 	virtual ~Person() { }
 
 	const std::string	&getName() const {
 		return _name;
 	}
 
-	void	setRoom(std::shared_ptr<Room> &room) {
+	void	setRoom(const std::shared_ptr<Room> &room) {
 		_currentRoom = room;
 	}
 

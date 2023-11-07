@@ -6,12 +6,12 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 13:07:17 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 21:46:23 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:30:54 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EX03_PATTERN_BASE_CLASSES_FACTORY_HPP__
-# define __EX03_PATTERN_BASE_CLASSES_FACTORY_HPP__
+#ifndef __PATTERN_BASE_CLASSES_FACTORY_HPP__
+# define __PATTERN_BASE_CLASSES_FACTORY_HPP__
 
 # include <memory>
 
@@ -55,19 +55,19 @@ public:
 	}
 };
 
-template <typename InheritedClass>
-class SharedFromThisFactory : public std::enable_shared_from_this<InheritedClass> {
+template <typename InheritedClass, typename BaseClass>
+class SharedFromThisFactory : public std::enable_shared_from_this<BaseClass> {
 protected:
 	SharedFromThisFactory() { }
 public:
 	virtual ~SharedFromThisFactory() { }
 
 	template <typename ... Args>
-	static std::shared_ptr<InheritedClass> create(Args&& ... args) {
-		return std::shared_ptr<InheritedClass>(new InheritedClass(std::forward<Args>(args) ...));
+	static std::shared_ptr<BaseClass> create(Args&& ... args) {
+		return std::shared_ptr<BaseClass>(new InheritedClass(std::forward<Args>(args) ...));
 	}
 };
 
 } } } // namespace ft::pattern::factory
 
-#endif // __EX03_PATTERN_BASE_CLASSES_FACTORY_HPP__
+#endif // __PATTERN_BASE_CLASSES_FACTORY_HPP__

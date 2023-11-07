@@ -6,12 +6,12 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:05:58 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:16:57 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:31:03 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EX03_PATTERN_BASE_CLASSES_COMMAND_HPP__
-# define __EX03_PATTERN_BASE_CLASSES_COMMAND_HPP__
+#ifndef __PATTERN_BASE_CLASSES_COMMAND_HPP__
+# define __PATTERN_BASE_CLASSES_COMMAND_HPP__
 
 namespace ft { namespace pattern { namespace command {
 
@@ -25,4 +25,4 @@ public:
 
 } } }// namespace ft::pattern::command
 
-#endif // __EX03_PATTERN_BASE_CLASSES_COMMAND_HPP__
+#endif // __PATTERN_BASE_CLASSES_COMMAND_HPP__

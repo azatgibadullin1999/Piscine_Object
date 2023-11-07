@@ -13,7 +13,12 @@ SOURCE_NAME =	main$(SOURCE_EXT) \
 		NeedCourseCreationForm$(SOURCE_EXT) \
 		NeedMoreClassRoomForm$(SOURCE_EXT) \
 		SubscriptionToCourseForm$(SOURCE_EXT) \
-		MediatorOfPerson$(SOURCE_EXT)
+		MediatorOfPerson$(SOURCE_EXT) \
+		Headmaster$(SOURCE_EXT) \
+		Professor$(SOURCE_EXT) \
+		Secretary$(SOURCE_EXT) \
+		Student$(SOURCE_EXT)
+
 
 INCLUDE_NAME_FORM =	Form$(INCLUDE_EXT) \
 			CourseFinishedForm$(INCLUDE_EXT) \

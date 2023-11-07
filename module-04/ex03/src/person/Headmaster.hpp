@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:09:15 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 01:13:41 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 09:51:53 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,20 @@
 
 class IForm;
 
-namespace ft { namespace details {
+namespace ft::__details {
 
 class HeadmasterBase : public Staff {
 private:
 	std::vector<std::shared_ptr<IForm>>	_formToValidate;
 public:
 	using Staff::Staff;
-	virtual ~HeadmasterBase() { }
-
-	void	enforceAttendance() {
-		getMediator()->notify(shared_from_this(), "enforce attendance");
-	}
-
-	void	receiveForm(const std::shared_ptr<IForm> &form) {
-		_formToValidate.push_back(form);
-	}
+	virtual ~HeadmasterBase();
+	void	enforceAttendance();
+	void	receiveForm(const std::shared_ptr<IForm> &form);
 };
 
-} } // namespace ft::deatils
+} // namespace ft::__deatils
 
-using Headmaster = ft::pattern::factory::FactoryWrapper<ft::details::HeadmasterBase>;
+using Headmaster = ft::pattern::factory::FactoryWrapper<ft::__details::HeadmasterBase>;
 
 #endif // __EX03_PERSON_HEADMASTER_HPP__

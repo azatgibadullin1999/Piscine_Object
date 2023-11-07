@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   CourseFinishedForm.cpp                             :+:      :+:    :+:   */
+/*   observer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 19:39:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/06 19:31:46 by larlena          ###   ########.fr       */
+/*   Created: 2023/11/06 20:53:14 by larlena           #+#    #+#             */
+/*   Updated: 2023/11/07 10:15:26 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "CourseFinishedForm.hpp"
+#ifndef __EX03_OBSERVER_HPP__
+# define __EX03_OBSERVER_HPP__
 
-void	CourseFinishedForm::execute() {
-	
-}
+
+
+#endif // __EX03_OBSERVER_HPP__

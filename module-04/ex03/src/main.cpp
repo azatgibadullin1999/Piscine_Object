@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 10:16:59 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/02 16:16:23 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:16:17 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "person/Secretary.hpp"
 #include "person/Headmaster.hpp"
 #include "person/MediatorOfPerson.hpp"
-
+#include "form/CourseFinishedForm.hpp"
 int	main() {
 	auto&&	schoolSingletonInstance = SchoolSingleton::getInstance();
 	auto&&	buffStuffs = schoolSingletonInstance.getStaffs();
@@ -25,6 +25,12 @@ int	main() {
 	auto&&	professorbuff = Professor::create("Professor");
 	auto&&	secretarybuff = Secretary::create("Secretary");
 	auto&&	studentbuff = Student::create("Student");
+
+
+	// headmasterbuff->attach(professorbuff);
+	// headmasterbuff->attach(studentbuff);
+
+	// headmasterbuff->notify();
 
 	auto&&	mediator = MediatorOfPerson::create();
 	mediator->setPersons(headmasterbuff, secretarybuff, professorbuff, studentbuff);
@@ -40,9 +46,9 @@ int	main() {
 	students.add(studentbuff);
 	students.retrieve(students.size() - 1);
 
-	SchoolSingleton::getInstance().getCourses().add(std::make_shared<Course>());
+	// SchoolSingleton::getInstance().getCourses().add(std::make_shared<Course>());
 	SchoolSingleton::getInstance().getRooms().add(std::make_shared<Room>());
-// 
+
 	SchoolSingleton::getInstance().getCourses().retrieve(0);
 	SchoolSingleton::getInstance().getStaffs().retrieve(0);
 	SchoolSingleton::getInstance().getStudents().retrieve(0);

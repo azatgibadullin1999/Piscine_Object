@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:54:32 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/02 15:56:27 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:25:12 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,27 @@
 # include <memory>
 # include "../pattern_base_classes/Mediator.hpp"
 # include "../pattern_base_classes/Factory.hpp"
-# include "Headmaster.hpp"
-# include "Professor.hpp"
-# include "Secretary.hpp"
-# include "Student.hpp"
-# include "Person.hpp"
+# include "PersonAliases.hpp"
 
-namespace ft { namespace details {
+namespace ft::__details {
 
-class MediatorOfPersonBase : public ft::pattern::mediator::IMediator<Person> {
+class MediatorOfPersonBase : public ft::pattern::mediator::IMediator<Person>,
+	public std::enable_shared_from_this<MediatorOfPersonBase> {
 private:
 	std::shared_ptr<Headmaster>	_headmaster;
 	std::shared_ptr<Secretary>	_secretary;
 	std::shared_ptr<Professor>	_professor;
 	std::shared_ptr<Student>	_student;
 protected:
-	MediatorOfPersonBase() noexcept { }
+	MediatorOfPersonBase() noexcept;
+	std::shared_ptr<IMediator>	getThis() override;
 public:
-	virtual ~MediatorOfPersonBase() { }
+	virtual ~MediatorOfPersonBase();
 
 	void	setPersons(const std::shared_ptr<Headmaster> &headmaster,
 			const std::shared_ptr<Secretary> &secretary,
 			const std::shared_ptr<Professor> &professor,
-			const std::shared_ptr<Student> &student) {
-		_headmaster = headmaster;
-		_secretary = secretary;
-		_professor = professor;
-		_student = student;
-		setMediators(_headmaster, _secretary, _professor, _student);
-	}
+			const std::shared_ptr<Student> &student);
 
 	void	notify(std::shared_ptr<Person> person, const std::string &event) override;
 private:
@@ -54,8 +46,8 @@ private:
 	void	notifyFromStudent(const std::string &event);
 };
 
-} } // namespace ft::details
+} // namespace ft::details
 
-using MediatorOfPerson = typename ft::pattern::factory::FactoryWrapper<ft::details::MediatorOfPersonBase>;
+using MediatorOfPerson = typename ft::pattern::factory::FactoryWrapper<ft::__details::MediatorOfPersonBase>;
 
 #endif // __EX03_PERSON_MEDIATOROFPERSON_HPP__

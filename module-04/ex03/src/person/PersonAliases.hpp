@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 00:38:48 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 00:53:34 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:47:56 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,18 @@
 
 # include "../pattern_base_classes/Factory.hpp"
 
-namespace ft::details {
-class HeadmasetBase;
+class Person;
+class Stuff;
+namespace ft::__details {
+class HeadmasterBase;
 class ProfessorBase;
 class SecretaryBase;
 class StudentBase;
 } // namespace ft::details
 
-using Student = ft::pattern::factory::FactoryWrapper<ft::details::StudentBase>;
-using Headmaset = ft::pattern::factory::FactoryWrapper<ft::details::HeadmasetBase>;
-using Professor = ft::pattern::factory::FactoryWrapper<ft::details::ProfessorBase>;
-using Secretary = ft::pattern::factory::FactoryWrapper<ft::details::SecretaryBase>;
+using Headmaster = ft::pattern::factory::FactoryWrapper<ft::__details::HeadmasterBase>;
+using Secretary = ft::pattern::factory::FactoryWrapper<ft::__details::SecretaryBase>;
+using Professor = ft::pattern::factory::FactoryWrapper<ft::__details::ProfessorBase>;
+using Student = ft::pattern::factory::FactoryWrapper<ft::__details::StudentBase>;
 
 #endif // __EX03_PERSON_PERSONALIASES_HPP__

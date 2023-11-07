@@ -6,12 +6,12 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 12:47:43 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 01:15:41 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:30:26 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __EX03_PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__
-# define __EX03_PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__
+#ifndef __PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__
+# define __PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__
 
 namespace ft { namespace pattern { namespace singleton {
 
@@ -35,4 +35,4 @@ public:
 
 } } } // namespace ft::pattern::singleton
 
-#endif // __EX03_PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__
+#endif // __PATTERN_BASE_CLASSES_SINGLETONWRAPPER_HPP__

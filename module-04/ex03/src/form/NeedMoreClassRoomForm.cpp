@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:43:42 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 01:09:44 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/06 20:46:01 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,7 @@ void	NeedMoreClassRoomForm::execute() {
 	if (requestor == nullptr) {
 		return ;
 	}
-	school.getRooms().add(std::make_shared<Classroom>());
+	auto&&	roombuff = std::make_shared<Classroom>();
+	school.getRooms().add(roombuff);
+	requestor->setRoom(roombuff);
 }

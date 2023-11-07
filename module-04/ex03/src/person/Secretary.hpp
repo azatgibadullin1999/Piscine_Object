@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:10:27 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/01 01:14:29 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/07 09:45:07 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,23 @@
 
 # include "Staff.hpp"
 # include "../pattern_base_classes/Factory.hpp"
-// # include "../form/CourseFinishedForm.hpp"
-// # include "../form/NeedCourseCreationForm.hpp"
-// # include "../form/NeedMoreClassRoomForm.hpp"
-// # include "../form/SubscriptionToCourseForm.hpp"
 
 class IForm;
 enum class FormType;
 std::shared_ptr<IForm>	createForm(FormType formType);
 
-namespace ft { namespace details {
+namespace ft::__details {
 
 class SecretaryBase : public Staff {
 public:
 	using Staff::Staff;
-	virtual ~SecretaryBase() { }
-
-	std::shared_ptr<IForm>	createForm(FormType formType) {
-		return ::createForm(formType);
-	}
-
-	void archiveForm() { }
+	virtual ~SecretaryBase();
+	std::shared_ptr<IForm>	createForm(FormType formType);
+	void archiveForm();
 };
 
-} } // namespace ft::details
+} // namespace ft::__details
 
-using Secretary = ft::pattern::factory::FactoryWrapper<ft::details::SecretaryBase>;
+using Secretary = ft::pattern::factory::FactoryWrapper<ft::__details::SecretaryBase>;
 
 #endif // __EX03_PERSON_SECRETARY_HPP__

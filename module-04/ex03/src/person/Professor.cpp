@@ -1,17 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   CourseFinishedForm.cpp                             :+:      :+:    :+:   */
+/*   Professor.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 19:39:50 by larlena           #+#    #+#             */
-/*   Updated: 2023/11/06 19:31:46 by larlena          ###   ########.fr       */
+/*   Created: 2023/11/07 10:05:32 by larlena           #+#    #+#             */
+/*   Updated: 2023/11/07 10:06:55 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "CourseFinishedForm.hpp"
+#include "Professor.hpp"
 
-void	CourseFinishedForm::execute() {
-	
+namespace ft::__details {
+
+ProfessorBase::~ProfessorBase() { }
+
+void	ProfessorBase::assignCourse(const std::shared_ptr<Course> &course) {
+	_currentCourse = course;
 }
+
+void	ProfessorBase::doClass() { }
+
+void	ProfessorBase::closeCourse() { }
+
+} // ft::__details

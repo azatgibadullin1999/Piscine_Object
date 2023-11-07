@@ -6,7 +6,7 @@
 /*   By: larlena <larlena@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:02:54 by larlena           #+#    #+#             */
-/*   Updated: 2023/10/31 00:19:21 by larlena          ###   ########.fr       */
+/*   Updated: 2023/11/06 20:48:33 by larlena          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 # define __EX03_ROOM_ROOM_HPP__
 
 # include <vector>
+# include <memory>
 
 class Person;
 
 class Room {
 private:
 	long long		ID;
-	std::vector<Person *>	_occupants;
+	std::vector<std::shared_ptr<Person>>	_occupants;
 public:
 	Room() { }
-	bool	canEnter(Person *);
-	void	enter(Person *);
-	void	exit(Person *);
+	bool	canEnter(const std::shared_ptr<Person> &person);
+	void	enter(const std::shared_ptr<Person> &person);
+	void	exit(const std::shared_ptr<Person> &person);
 	void	printOccupant();
 };
 
